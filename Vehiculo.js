@@ -56,15 +56,10 @@ class Vehiculo{
 						let vehiculo;
 						let dato = auto.split('@');
 						if(auto.indexOf('Cilindrada') > 0){
-							vehiculo = new Motocicleta();
-							vehiculo.cilindrada = (dato[2].split(':'))[1].trim();
+							vehiculo = new Motocicleta((dato[0].split(':'))[1].trim(),(dato[1].split(':'))[1].trim(),(dato[2].split(':'))[1].trim(),(dato[3].split(':'))[1].trim());
 						}else{
-							vehiculo = new Auto();
-							vehiculo.puertas = (dato[2].split(':'))[1].trim();
+							vehiculo = new Motocicleta((dato[0].split(':'))[1].trim(),(dato[1].split(':'))[1].trim(),(dato[2].split(':'))[1].trim(),(dato[3].split(':'))[1].trim());
 						}
-						vehiculo.marca = (dato[0].split(':'))[1].trim();
-						vehiculo.modelo = (dato[1].split(':'))[1].trim();				
-						vehiculo.precio = (dato[3].split(':'))[1].trim();
 						vehiculos.push(vehiculo);
 					}
 				}

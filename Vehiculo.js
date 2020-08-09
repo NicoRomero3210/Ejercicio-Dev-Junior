@@ -52,7 +52,7 @@ class Vehiculo{
 			let datosAutosIndividuales = data.split('\r\n');
 			datosAutosIndividuales.forEach((auto,index)=>{
 				if(auto !== ''){
-					if(index < (datosAutosIndividuales.length)){
+					//if(index < (datosAutosIndividuales.length)){
 						let vehiculo;
 						let dato = auto.split('@');
 						if(auto.indexOf('Cilindrada') > 0){
@@ -61,7 +61,7 @@ class Vehiculo{
 							vehiculo = new Motocicleta((dato[0].split(':'))[1].trim(),(dato[1].split(':'))[1].trim(),(dato[2].split(':'))[1].trim(),(dato[3].split(':'))[1].trim());
 						}
 						vehiculos.push(vehiculo);
-					}
+					//}
 				}
 			})
 			Vehiculo.mostrarDatos(vehiculos);

@@ -9,17 +9,26 @@ class Vehiculo{
 	
 	static mostrarDatos = (arrayVehiculos) => {
 		let arrayFinal = [];
+		console.log(arrayVehiculos)
 		let vehiculoMasCaro = arrayVehiculos[0];
 		let vehiculoMasBarato = arrayVehiculos[0];
 		let vehiculoConY = ''
 		console.log('\n')
 		arrayVehiculos.forEach((vehiculo,index) => {
-			let datosVehiculo
-			if(vehiculo.cilindrada === undefined){
-				datosVehiculo = `Marca: ${vehiculo.marca} // Modelo: ${vehiculo.modelo} // Puertas: ${vehiculo.puertas} // Precio: $${vehiculo.precio}`; 
-			}else{
-				datosVehiculo = `Marca: ${vehiculo.marca} // Modelo: ${vehiculo.modelo} // Cilindrada: ${vehiculo.cilindrada} // Precio: $${vehiculo.precio}`; 
-			}
+			let datosVehiculo = '';
+			let datoUltimo = '';
+			
+			(Object.keys(vehiculo)).forEach((value,index) => {
+				switch(index){
+					case 0: datosVehiculo = `${value}: ${vehiculo[value]} //`
+							break;
+					case 2: datoUltimo = `${value}: ${vehiculo[value]}`
+							break;
+					case 3: datosVehiculo = datosVehiculo + ` // ${value}: ${vehiculo[value]} // `+datoUltimo;
+							break;
+					default: datosVehiculo = datosVehiculo + ` // ${value}: ${vehiculo[value]}`;
+				}
+			});
 			let precio = parseFloat(vehiculo.precio);
 			vehiculoMasCaro = ((parseFloat(vehiculoMasCaro.precio)) < precio) ? vehiculo : vehiculoMasCaro;
 			vehiculoMasBarato = ((parseFloat(vehiculoMasBarato.precio)) > precio) ? vehiculo : vehiculoMasBarato;
@@ -58,7 +67,7 @@ class Vehiculo{
 						if(auto.indexOf('Cilindrada') > 0){
 							vehiculo = new Motocicleta((dato[0].split(':'))[1].trim(),(dato[1].split(':'))[1].trim(),(dato[2].split(':'))[1].trim(),(dato[3].split(':'))[1].trim());
 						}else{
-							vehiculo = new Motocicleta((dato[0].split(':'))[1].trim(),(dato[1].split(':'))[1].trim(),(dato[2].split(':'))[1].trim(),(dato[3].split(':'))[1].trim());
+							vehiculo = new Auto((dato[0].split(':'))[1].trim(),(dato[1].split(':'))[1].trim(),(dato[2].split(':'))[1].trim(),(dato[3].split(':'))[1].trim());
 						}
 						vehiculos.push(vehiculo);
 					//}

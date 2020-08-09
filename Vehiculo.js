@@ -9,7 +9,7 @@ class Vehiculo{
 	
 	static mostrarDatos = (arrayVehiculos) => {
 		let arrayFinal = [];
-		console.log(arrayVehiculos)
+		//console.log(arrayVehiculos)
 		let vehiculoMasCaro = arrayVehiculos[0];
 		let vehiculoMasBarato = arrayVehiculos[0];
 		let vehiculoConY = ''
@@ -20,7 +20,7 @@ class Vehiculo{
 			
 			(Object.keys(vehiculo)).forEach((value,index) => {
 				switch(index){
-					case 0: datosVehiculo = `${value}: ${vehiculo[value]} //`
+					case 0: datosVehiculo = `${value}: ${vehiculo[value]}`
 							break;
 					case 2: datoUltimo = `${value}: ${vehiculo[value]}`
 							break;
